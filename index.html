@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HollyreiMarket - Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c6fbb;
+            --primary-dark: #1e4a8f;
+            --primary-light: #5a9de6;
+            --secondary: #f8f9fa;
+            --accent: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #777;
+            --text-white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --music-player: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f5f7fa;
+            background-image: linear-gradient(to right, #f8f9fa 1px, transparent 1px),
+                              linear-gradient(to bottom, #f8f9fa 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--text-white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #ffd166;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            color: var(--text-white);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* World Clock Section */
+        .clock-section {
+            padding: 3rem 0;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .clock-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .clock-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+        }
+
+        .clock-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .clock-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .flag-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+
+        .clock-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .clock-time {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .clock-date {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .timezone-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--text-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: var(--text-white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* QRIS Section */
+        .qris-section {
+            padding: 3rem 0;
+            background-color: var(--secondary);
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .qris-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .qris-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .qris-image {
+            width: 250px;
+            height: 250px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .qris-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Music Player - Redesigned */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--music-player);
+            color: var(--text-white);
+            border-radius: 25px;
+            padding: 15px 25px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            z-index: 999;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 300px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .music-player:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .music-player.compact {
+            min-width: auto;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .music-player.compact .music-info,
+        .music-player.compact .music-controls {
+            display: none;
+        }
+
+        .music-player.compact .music-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .music-toggle {
+            display: none;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--text-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            margin: 0 5px;
+            backdrop-filter: blur(5px);
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        .play-btn:hover {
+            background: linear-gradient(135deg, #ff7b7f 0%, #f8c0b0 100%);
+            transform: scale(1.15);
+        }
+
+        .music-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .music-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 3px;
+        }
+
+        .music-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd166, #ff9a9e);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .music-time {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--text-white);
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-light);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--text-white);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-order {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .submit-order:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .clock-time {
+                font-size: 1.8rem;
+            }
+
+            .clock-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .music-player {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                min-width: auto;
+                width: calc(100% - 40px);
+            }
+
+            .music-player.compact {
+                width: 60px;
+                height: 60px;
+                right: 20px;
+                left: auto;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-player {
+                padding: 12px 20px;
+            }
+            
+            .music-player.compact {
+                bottom: 70px;
+            }
+            
+            .clock-card {
+                padding: 1rem;
+            }
+            
+            .clock-time {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Player -->
+    <div class="music-player" id="music-player">
+        <div class="music-controls">
+            <button class="music-btn" id="prev-btn" title="Sebelumnya">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="music-btn play-btn" id="play-btn" title="Putar">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="music-btn" id="next-btn" title="Berikutnya">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        <div class="music-info">
+            <div class="music-title" id="music-title">Memuat musik...</div>
+            <div class="music-progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="music-time">
+                <span id="current-time">0:00</span>
+                <span id="total-time">0:00</span>
+            </div>
+        </div>
+        <button class="music-toggle" id="toggle-player">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gem"></i>
+                    <span>HollyreiMarket</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#clock">Waktu Dunia</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#qris">Pembayaran</a></li>
+                        <li><a href="#order">Pesan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Toko Online</h1>
+            <p>Temukan koleksi produk eksklusif dengan kualitas terbaik. Pengiriman cepat dan aman ke seluruh Indonesia.</p>
+        </div>
+    </section>
+
+    <!-- World Clock Section -->
+    <section class="clock-section" id="clock">
+        <div class="container">
+            <div class="section-title">
+                <h2>Waktu Dunia</h2>
+                <p>Waktu real-time di seluruh dunia</p>
+            </div>
+            <div class="clock-container" id="world-clocks">
+                <!-- Jam akan dimuat via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Unggulan</h2>
+            </div>
+            <div class="products-grid" id="products-container">
+                <!-- Produk akan dimuat via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- QRIS Section -->
+    <section class="qris-section" id="qris">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pembayaran QRIS</h2>
+            </div>
+            <div class="qris-container">
+                <h3 class="qris-title">Scan QRIS untuk Pembayaran</h3>
+                <p>Gunakan aplikasi mobile banking atau e-wallet untuk scan kode QRIS berikut:</p>
+                <div class="qris-image">
+                    <img src="" alt="QR Code" id="qris-image">
+                </div>
+                <p style="text-align: center; color: #777; font-size: 0.9rem;">
+                    <i class="fas fa-lock"></i> Pembayaran aman dan terjamin
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <h2 class="modal-title">Form Pemesanan</h2>
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="product-name">Produk yang Dipesan</label>
+                    <input type="text" id="product-name" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="customer-name">Nama Lengkap</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Nomor WhatsApp</label>
+                    <input type="tel" id="customer-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Alamat Pengiriman</label>
+                    <textarea id="customer-address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Jumlah</label>
+                    <select id="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-order">Kirim Pesanan ke Telegram</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HollyreiMarket</h3>
+                    <p>Toko online dengan produk berkualitas tinggi dan pelayanan terbaik untuk Anda.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Batang, Indonesia</p>
+                    <p><i class="fas fa-envelope"></i> nugrohoaufa94@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> <span id="current-indonesia-time"></span></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <a href="#home">Beranda</a>
+                    <a href="#clock">Waktu Dunia</a>
+                    <a href="#products">Produk</a>
+                    <a href="#qris">Pembayaran</a>
+                    <a href="#order">Cara Pesan</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 HollyreiMarket. Hak Cipta Dilindungi. <span id="current-year"></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================
+        // KONFIGURASI YANG BISA ANDA UBAH
+        // ============================
+        
+        // 1. QRIS Configuration - Ganti URL QRIS Anda di sini
+        const QRIS_IMAGE_URL = "https://files.catbox.moe/o2r7m1.jpg";
+        
+        // 2. Music Configuration - Ganti musik Anda di sini
+        const MUSIC_CONFIG = [
+            {
+                title: "HollyreiMarket - Hollyrei",
+                url: "https://files.catbox.moe/c0g1lm.mp3"
+            },
+            {
+                title: "Tak Kan Hilang - Budi Doremi",
+                url: "https://files.catbox.moe/kthbd2"
+            },
+            {
+                title: "Bukan Cinta Biasa - Afgan",
+                url: "https://files.catbox.moe/mxfiio.mp3"
+            }
+        ];
+        
+        // 3. Telegram Configuration - Ganti username Telegram Anda di sini
+        const TELEGRAM_USERNAME = "HollyreiMrkt";
+        
+        // 4. Produk Configuration
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Script Icarus Invictus",
+                price: "Rp 20.000",
+                description: "Script Bug Whatsapp",
+                image: "https://files.catbox.moe/2azcdb.jpg"
+            },
+            {
+                id: 2,
+                name: "Script Tredict Invictus",
+                price: "Rp 100.000",
+                description: "Script Bug Whatsapp",
+                image: "https://files.catbox.moe/hbk899.jpg"
+            },
+            {
+                id: 3,
+                name: "Sc+Apk OTAX",
+                price: "Rp 40.000",
+                description: "Script Bug Whatsapp",
+                image: "https://files.catbox.moe/ch2tzn.jpg"
+            },
+            {
+                id: 4,
+                name: "Panel Pterodactyl",
+                price: "Rp 8.000",
+                description: "Panel Dengan Spek Kencang",
+                image: "https://files.catbox.moe/3e9gek.jpg"
+            },
+            {
+                id: 5,
+                name: "Script Ovalium Ghost",
+                price: "Rp 35.000",
+                description: "Script Bug Whatsapp",
+                image: "https://files.catbox.moe/bajtik.jpg"
+            },
+            {
+                id: 6,
+                name: "Murbug VIP",
+                price: "Rp 20.000",
+                image: "https://files.catbox.moe/x7n8u3.jpg"
+            },
+            {
+                id: 7,
+                name: "Spotify Premium",
+                price: "Rp 15.000",
+                description: "Spotify",
+                image: "https://files.catbox.moe/2azcdb.jpg"
+            },
+            {
+                id: 8,
+                name: "AM Premium",
+                price: "Rp 5.000",
+                description: "AM Premium",
+                image: "https://files.catbox.moe/2azcdb.jpg"
+            },
+            {
+                id: 9,
+                name: "Script Aphophis Engine",
+                price: "Rp 50.000",
+                description: "Script Bug Whatsapp",
+                image: "https://files.catbox.moe/06glf7.jpg"
+            }
+        ];
+
+        // 5. World Clock Configuration - Anda bisa menambah/mengurangi zona waktu
+        const WORLD_CLOCKS = [
+            {
+                id: "wib",
+                name: "Jakarta, Indonesia (WIB)",
+                timezone: "Asia/Jakarta",
+                flag: "🇮🇩",
+                country: "Indonesia"
+            },
+            {
+                id: "wit",
+                name: "Jayapura, Indonesia (WIT)",
+                timezone: "Asia/Jayapura",
+                flag: "🇮🇩",
+                country: "Indonesia"
+            },
+            {
+                id: "wita",
+                name: "Makassar, Indonesia (WITA)",
+                timezone: "Asia/Makassar",
+                flag: "🇮🇩",
+                country: "Indonesia"
+            },
+            {
+                id: "singapore",
+                name: "Singapore",
+                timezone: "Asia/Singapore",
+                flag: "🇸🇬",
+                country: "Singapore"
+            },
+            {
+                id: "tokyo",
+                name: "Tokyo, Japan",
+                timezone: "Asia/Tokyo",
+                flag: "🇯🇵",
+                country: "Japan"
+            },
+            {
+                id: "seoul",
+                name: "Seoul, South Korea",
+                timezone: "Asia/Seoul",
+                flag: "🇰🇷",
+                country: "South Korea"
+            },
+            {
+                id: "beijing",
+                name: "Beijing, China",
+                timezone: "Asia/Shanghai",
+                flag: "🇨🇳",
+                country: "China"
+            },
+            {
+                id: "dubai",
+                name: "Dubai, UAE",
+                timezone: "Asia/Dubai",
+                flag: "🇦🇪",
+                country: "UAE"
+            },
+            {
+                id: "moscow",
+                name: "Moscow, Russia",
+                timezone: "Europe/Moscow",
+                flag: "🇷🇺",
+                country: "Russia"
+            },
+            {
+                id: "london",
+                name: "London, UK",
+                timezone: "Europe/London",
+                flag: "🇬🇧",
+                country: "UK"
+            },
+            {
+                id: "paris",
+                name: "Paris, France",
+                timezone: "Europe/Paris",
+                flag: "🇫🇷",
+                country: "France"
+            },
+            {
+                id: "newyork",
+                name: "New York, USA",
+                timezone: "America/New_York",
+                flag: "🇺🇸",
+                country: "USA"
+            },
+            {
+                id: "losangeles",
+                name: "Los Angeles, USA",
+                timezone: "America/Los_Angeles",
+                flag: "🇺🇸",
+                country: "USA"
+            },
+            {
+                id: "sydney",
+                name: "Sydney, Australia",
+                timezone: "Australia/Sydney",
+                flag: "🇦🇺",
+                country: "Australia"
+            },
+            {
+                id: "auckland",
+                name: "Auckland, New Zealand",
+                timezone: "Pacific/Auckland",
+                flag: "🇳🇿",
+                country: "New Zealand"
+            }
+        ];
+        
+        // ============================
+        // KODE UTAMA
+        // ============================
+        
+        // Inisialisasi variabel
+        let currentProduct = null;
+        let currentMusicIndex = 0;
+        let audioPlayer = new Audio();
+        let isPlaying = false;
+        let updateInterval;
+
+        // Format waktu menjadi string yang rapi
+        function formatTime(date) {
+            return date.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+        }
+
+        // Format tanggal
+        function formatDate(date) {
+            return date.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Format waktu untuk zona waktu tertentu
+        function getTimeForTimezone(timezone) {
+            const now = new Date();
+            const options = {
+                timeZone: timezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const time = now.toLocaleTimeString('id-ID', options);
+            
+            const dateOptions = {
+                timeZone: timezone,
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const date = now.toLocaleDateString('id-ID', dateOptions);
+            
+            return { time, date };
+        }
+
+        // Update jam dunia
+        function updateWorldClocks() {
+            const clocksContainer = document.getElementById('world-clocks');
+            clocksContainer.innerHTML = '';
+            
+            WORLD_CLOCKS.forEach(clock => {
+                const { time, date } = getTimeForTimezone(clock.timezone);
+                
+                const clockCard = document.createElement('div');
+                clockCard.className = 'clock-card';
+                clockCard.innerHTML = `
+                    <div class="clock-header">
+                        <div class="flag-icon">${clock.flag}</div>
+                        <div>
+                            <div class="clock-title">${clock.name}</div>
+                            <div style="font-size: 0.8rem; color: #666;">${clock.country}</div>
+                        </div>
+                    </div>
+                    <div class="clock-time">${time}</div>
+                    <div class="clock-date">${date}</div>
+                    <div class="timezone-info">
+                        <span>${clock.timezone.split('/')[1]}</span>
+                        <span>GMT${new Date().toLocaleTimeString('en-US', {timeZone: clock.timezone, timeZoneName: 'short'}).split(' ')[2]}</span>
+                    </div>
+                `;
+                clocksContainer.appendChild(clockCard);
+            });
+            
+            // Update waktu Indonesia di footer
+            const indonesiaTime = getTimeForTimezone('Asia/Jakarta');
+            document.getElementById('current-indonesia-time').textContent = 
+                `${indonesiaTime.time} (WIB) - ${indonesiaTime.date}`;
+        }
+
+        // Fungsi untuk memuat produk
+        function loadProducts() {
+            const productsContainer = document.getElementById('products-container');
+            productsContainer.innerHTML = '';
+            
+            PRODUCTS.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Produk+Image'">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <p class="product-description">${product.description || 'Produk berkualitas terbaik'}</p>
+                        <button class="order-btn" data-id="${product.id}">Pesan Sekarang</button>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Tambahkan event listener untuk tombol pesan
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    openOrderModal(productId);
+                });
+            });
+        }
+
+        // Fungsi untuk membuka modal pemesanan
+        function openOrderModal(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentProduct = product;
+            document.getElementById('product-name').value = product.name;
+            document.getElementById('order-modal').style.display = 'flex';
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            document.getElementById('order-modal').style.display = 'none';
+        }
+
+        // Fungsi untuk mengirim pesanan ke Telegram
+        function sendToTelegram(orderData) {
+            const message = `Pesanan Baru:%0A%0AProduk: ${orderData.product}%0ANama: ${orderData.name}%0AWhatsApp: ${orderData.phone}%0AAlamat: ${orderData.address}%0AJumlah: ${orderData.quantity}`;
+            const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${message}`;
+            window.open(telegramUrl, '_blank');
+        }
+
+        // Fungsi untuk musik player yang lebih baik
+        function initMusicPlayer() {
+            const playBtn = document.getElementById('play-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const musicTitle = document.getElementById('music-title');
+            const progressBar = document.getElementById('progress-bar');
+            const currentTimeEl = document.getElementById('current-time');
+            const totalTimeEl = document.getElementById('total-time');
+            const musicPlayer = document.getElementById('music-player');
+            const togglePlayer = document.getElementById('toggle-player');
+            
+            // Cek apakah ada musik yang dikonfigurasi
+            if (MUSIC_CONFIG.length === 0) {
+                musicTitle.textContent = "Tidak ada musik";
+                playBtn.disabled = true;
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
+            
+            // Format waktu musik
+            function formatMusicTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            
+            // Update progress bar
+            function updateProgress() {
+                if (!audioPlayer.duration) return;
+                
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                currentTimeEl.textContent = formatMusicTime(audioPlayer.currentTime);
+            }
+            
+            // Load musik pertama
+            function loadMusic(index) {
+                currentMusicIndex = index;
+                audioPlayer.src = MUSIC_CONFIG[currentMusicIndex].url;
+                musicTitle.textContent = MUSIC_CONFIG[currentMusicIndex].title;
+                
+                audioPlayer.addEventListener('loadedmetadata', function() {
+                    totalTimeEl.textContent = formatMusicTime(audioPlayer.duration);
+                });
+                
+                if (isPlaying) {
+                    audioPlayer.play().catch(e => {
+                        console.error("Gagal memutar musik:", e);
+                        musicTitle.textContent = "Error memutar musik";
+                    });
+                }
+            }
+            
+            // Toggle compact mode
+            togglePlayer.addEventListener('click', function() {
+                musicPlayer.classList.toggle('compact');
+                if (musicPlayer.classList.contains('compact')) {
+                    this.innerHTML = '<i class="fas fa-expand"></i>';
+                } else {
+                    this.innerHTML = '<i class="fas fa-music"></i>';
+                }
+            });
+            
+            // Load musik pertama
+            loadMusic(0);
+            
+            // Play/Pause button
+            playBtn.addEventListener('click', function() {
+                if (MUSIC_CONFIG.length === 0) return;
+                
+                if (isPlaying) {
+                    audioPlayer.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playBtn.title = "Putar";
+                } else {
+                    audioPlayer.play().catch(e => {
+                        console.error("Gagal memutar musik:", e);
+                        musicTitle.textContent = "Error memutar musik";
+                    });
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.title = "Jeda";
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Previous button
+            prevBtn.addEventListener('click', function() {
+                if (MUSIC_CONFIG.length === 0) return;
+                
+                const newIndex = (currentMusicIndex - 1 + MUSIC_CONFIG.length) % MUSIC_CONFIG.length;
+                loadMusic(newIndex);
+            });
+            
+            // Next button
+            nextBtn.addEventListener('click', function() {
+                if (MUSIC_CONFIG.length === 0) return;
+                
+                const newIndex = (currentMusicIndex + 1) % MUSIC_CONFIG.length;
+                loadMusic(newIndex);
+            });
+            
+            // Update progress setiap detik
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+            
+            // Handle audio end
+            audioPlayer.addEventListener('ended', function() {
+                if (MUSIC_CONFIG.length === 0) return;
+                
+                const newIndex = (currentMusicIndex + 1) % MUSIC_CONFIG.length;
+                loadMusic(newIndex);
+                
+                if (isPlaying) {
+                    audioPlayer.play().catch(e => {
+                        console.error("Audio error:", e);
+                    });
+                }
+            });
+            
+            // Click progress bar to seek
+            document.querySelector('.music-progress').addEventListener('click', function(e) {
+                if (!audioPlayer.duration) return;
+                
+                const progressWidth = this.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audioPlayer.duration;
+                
+                audioPlayer.currentTime = (clickX / progressWidth) * duration;
+            });
+        }
+
+        // Fungsi untuk load QRIS
+        function loadQRIS() {
+            const qrisImage = document.getElementById('qris-image');
+            if (QRIS_IMAGE_URL) {
+                qrisImage.src = QRIS_IMAGE_URL;
+                qrisImage.alt = "QR Code Pembayaran";
+                qrisImage.onerror = function() {
+                    this.src = 'https://via.placeholder.com/250x250?text=QRIS+Tidak+Tersedia';
+                };
+            } else {
+                qrisImage.src = "https://files.catbox.moe/o2r7m1.jpg";
+                qrisImage.alt = "QR Code default";
+            }
+        }
+
+        // Inisialisasi ketika halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set tahun di footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Load konfigurasi
+            loadQRIS();
+            loadProducts();
+            initMusicPlayer();
+            
+            // Update jam dunia setiap detik
+            updateWorldClocks();
+            setInterval(updateWorldClocks, 1000);
+            
+            // Event listener untuk form pemesanan
+            document.getElementById('order-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const orderData = {
+                    product: document.getElementById('product-name').value,
+                    name: document.getElementById('customer-name').value,
+                    phone: document.getElementById('customer-phone').value,
+                    address: document.getElementById('customer-address').value,
+                    quantity: document.getElementById('quantity').value
+                };
+                
+                sendToTelegram(orderData);
+                closeModal();
+                alert('Terima kasih! Pesanan Anda akan diproses. Silakan lanjutkan konfirmasi via Telegram.');
+                this.reset();
+            });
+            
+            // Event listener untuk menutup modal
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            
+            // Tutup modal jika klik di luar konten modal
+            window.addEventListener('click', function(e) {
+                const modal = document.getElementById('order-modal');
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
